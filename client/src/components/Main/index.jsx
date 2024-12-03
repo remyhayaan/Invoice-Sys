@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 
 const Main = () => {
@@ -8,6 +8,23 @@ const Main = () => {
   const [invoices, setInvoices] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [newItem, setNewItem] = useState({ description: "", quantity: 1, price: 0 });
+
+  useEffect(() => {
+    fetchInvoices();
+  }, []);
+
+  // Fetch invoices from the server
+  const fetchInvoices = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/invoices/invoice");
+      const data = await response.json();
+      setInvoices(data);
+    } catch (error) {
+      console.error("Error fetching invoices:", error);
+      alert("Failed to fetch invoices.");
+    }
+  };
+  
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -36,7 +53,39 @@ const Main = () => {
     setItems(items.filter((_, i) => i !== index));
   };
 
- 
+  const handleSaveInvoice = async () => {
+    if (!customerName || !date || items.length === 0) {
+      alert("Please complete all fields before saving.");
+      return;
+    }
+  
+    const grandTotal = calculateGrandTotal();
+  
+    try {
+      const response = await fetch("http://localhost:8080/api/invoices/save", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ customerName, date, items, grandTotal }),
+      });
+  
+      const data = await response.json();
+      if (response.ok) {
+        alert("Invoice saved successfully!");
+        setCustomerName("");
+        setDate("");
+        setItems([]);
+        fetchInvoices(); // Refresh the list of invoices
+      } else {
+        alert(data.message || "Failed to save invoice.");
+      }
+    } catch (error) {
+      console.error("Error saving invoice:", error);
+      alert("Error saving invoice. Please try again.");
+    }
+  };
+  
 
   return (
     <div className="main_container">
@@ -45,7 +94,6 @@ const Main = () => {
         <button className="white_btn" onClick={handleLogout}>
           Logout
         </button>
-        
       </nav>
 
       <form className="invoice-form">
@@ -101,11 +149,7 @@ const Main = () => {
           </tbody>
         </table>
 
-        <button
-          type="button"
-          className="add-item-btn"
-          onClick={openModal}
-        >
+        <button type="button" className="add-item-btn" onClick={openModal}>
           Add Item
         </button>
 
@@ -114,12 +158,10 @@ const Main = () => {
         </div>
 
         <div className="action-btns">
-         
-          <button
-            type="button"
-            className="print-btn"
-            onClick={() => window.print()}
-          >
+          <button type="button" className="save-btn" onClick={handleSaveInvoice}>
+            Save Invoice
+          </button>
+          <button type="button" className="print-btn" onClick={() => window.print()}>
             Print Receipt
           </button>
         </div>
@@ -157,18 +199,10 @@ const Main = () => {
             />
           </div>
           <div className="modal-actions">
-            <button
-              type="button"
-              className="modal-ok-btn"
-              onClick={handleAddItem}
-            >
+            <button type="button" className="modal-ok-btn" onClick={handleAddItem}>
               OK
             </button>
-            <button
-              type="button"
-              className="modal-cancel-btn"
-              onClick={closeModal}
-            >
+            <button type="button" className="modal-cancel-btn" onClick={closeModal}>
               Cancel
             </button>
           </div>
@@ -176,12 +210,19 @@ const Main = () => {
       )}
 
       {/* Overlay for Modal */}
-      {showModal && (
-        <div
-          className="overlay"
-          onClick={closeModal}
-        />
-      )}
+      {showModal && <div className="overlay" onClick={closeModal} />}
+
+      {/* Display Saved Invoices */}
+      <div className="invoices-section">
+        <h2>Saved Invoices</h2>
+        {invoices.map((invoice) => (
+          <div key={invoice._id} className="invoice-card">
+            <h4>{invoice.customerName}</h4>
+            <p>Date: {new Date(invoice.date).toLocaleDateString()}</p>
+            <p>Grand Total: Shs {invoice.grandTotal}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

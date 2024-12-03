@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { saveInvoice, getInvoices } = require('../controllers/invoiceController');
+const { saveInvoice, getInvoices } = require('../controller/invoiceController');
 
 // Route to save an invoice
-router.post('/save', saveInvoice);
+router.post("/save", saveInvoice);
 
 // Route to get all invoices
-router.get('/', getInvoices);
+router.get("/invoice", getInvoices);
 
 module.exports = router;

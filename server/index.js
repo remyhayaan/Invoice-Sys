@@ -5,6 +5,7 @@ const cors = require("cors");
 const connection = require("./db");
 const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
+const invoiceRoutes = require("./routes/invoiceRoute");  // Import the invoice routes
 
 // database connection
 connection();
@@ -17,5 +18,9 @@ app.use(cors());
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 
+// Register the invoice routes with the appropriate prefix
+app.use("/api/invoices", invoiceRoutes);  // Prefixing the invoice routes with '/api/invoices'
+
+// Start the server
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));
