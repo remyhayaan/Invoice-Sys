@@ -1,0 +1,471 @@
+/* General Styles */
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f4f4f9; /* Neutral background */
+	color: #333;
+  }
+  
+  h1, h2, h3 {
+	font-weight: bold;
+	color: #222;
+  }
+  
+  a {
+	color: #3bb19b;
+	text-decoration: none;
+  }
+  
+  a:hover {
+	text-decoration: underline;
+  }
+  
+  /* Invoice Container */
+  .invoice-container {
+	text-align: center;
+	margin: 40px auto;
+	padding: 20px;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 90%;
+	max-width: 1000px;
+  }
+  
+  /* Invoice Header */
+  .invoice-header h1 {
+	font-size: 36px;
+	margin-bottom: 10px;
+	color: #3bb19b;
+  }
+  
+  .invoice-header p {
+	font-size: 18px;
+	color: #555;
+  }
+  
+  /* Invoice Form */
+  .invoice-form {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: #fafafa;
+  }
+  
+  .form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+  }
+  
+  .form-group label {
+	font-size: 14px;
+	font-weight: bold;
+  }
+  
+  .form-group input {
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 16px;
+  }
+  
+  .form-group input:focus {
+	outline: 2px solid #3bb19b;
+	border-color: #3bb19b;
+  }
+  
+  /* Invoice Table */
+  .invoice-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 20px 0;
+  }
+  
+  .invoice-table th, 
+  .invoice-table td {
+	padding: 12px 15px;
+	text-align: left;
+	border: 1px solid #ddd;
+  }
+  
+  .invoice-table th {
+	background-color: #3bb19b;
+	color: white;
+	font-size: 14px;
+	text-transform: uppercase;
+  }
+  
+  .invoice-table td {
+	font-size: 14px;
+  }
+  
+  .invoice-table td:last-child {
+	text-align: center;
+  }
+  
+  .remove-item-btn {
+	background-color: #e63946;
+	color: white;
+	padding: 8px 10px;
+	border: none;
+	border-radius: 5px;
+	font-size: 12px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  }
+  
+  .remove-item-btn:hover {
+	background-color: #d62839;
+  }
+  
+  /* Grand Total */
+  .grand-total {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: right;
+	color: #3bb19b;
+	margin-top: 20px;
+  }
+  
+  /* Buttons */
+  button {
+	font-size: 16px;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	transition: all 0.3s ease;
+  }
+  
+  .add-item-btn {
+	width: 30%;
+	background-color: #3bb19b;
+	color: white;
+	padding: 10px 20px; /* Adds padding for a larger button */
+	border: none; /* Removes the default border */
+	border-radius: 5px; /* Rounded corners */
+	font-size: 16px; /* Sets a readable font size */
+	font-weight: bold; /* Makes text bolder */
+	text-transform: uppercase; /* Uppercases the text */
+	cursor: pointer; /* Changes cursor to pointer on hover */
+	transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+  }
+  
+  .add-item-btn:hover {
+	background-color: #319b89; /* Darkens the background on hover */
+	transform: scale(1.05); /* Slightly increases the size on hover */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a shadow on hover */
+  }
+  
+  .add-item-btn:active {
+	background-color: #288f76; /* Darker shade when clicked */
+	transform: scale(0.98); /* Shrinks the button when pressed */
+  }
+  
+  .add-item-btn:focus {
+	outline: none; /* Removes the default focus outline */
+	box-shadow: 0 0 0 3px rgba(59, 177, 155, 0.5); /* Custom focus outline */
+  }
+  
+ /* Print Button */
+.print-btn {
+	background-color: #6a1b9a; /* Purple color for differentiation */
+	color: white;
+	font-size: 16px;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	margin: 10px 0; /* Adds vertical spacing above and below the button */
+}
+
+.print-btn:hover {
+	background-color: #5a1480; /* Slightly darker purple for hover */
+	transform: scale(1.05); /* Adds a subtle zoom effect */
+}
+
+  
+  /* Modal */
+  .modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	z-index: 1000;
+	width: 90%;
+	max-width: 400px;
+  }
+  
+  .modal h3 {
+	margin-bottom: 15px;
+	font-size: 20px;
+	color: #333;
+  }
+  
+  .modal-actions {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+  }
+  
+  .modal-ok-btn {
+	background-color: #3bb19b;
+	color: white;
+  }
+  
+  .modal-cancel-btn {
+	background-color: #e63946;
+	color: white;
+  }
+  
+  /* Overlay */
+  .overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 999;
+  }
+  
+  /* Login and Signup Forms */
+  .login-container, .signup-container {
+	max-width: 400px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+	text-align: center;
+	margin-bottom: 20px;
+	color: #3bb19b;
+  }
+  
+  .login-btn, .signup-btn {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	background-color: #3bb19b;
+	color: white;
+  }
+  
+  .login-btn:hover, .signup-btn:hover {
+	background-color: #319b89;
+  }
+  
+  .signup-link, .login-link {
+	text-align: center;
+	margin-top: 15px;
+	font-size: 14px;
+	color: #555;
+  }
+  
+  .signup-link a, .login-link a {
+	color: #3bb19b;
+	font-weight: bold;
+  }
+  
+  .signup-link a:hover, .login-link a:hover {
+	text-decoration: underline;
+  }
+  
+  /* Print Styles */
+ /* Print media query */
+@media print {
+	/* Hide the actions column in the invoice table */
+	.invoice-table th:nth-child(5),
+	.invoice-table td:nth-child(5) {
+	  display: none;
+	}
+  
+	/* Hide buttons like "Add Item", "Remove Item", and "Logout" */
+	.add-item-btn,
+	.remove-item-btn,
+	.print-btn {
+	  display: none;
+	}
+  
+	/* Hide the Logout button */
+	.logout-btn {
+	  display: none;
+	}
+  
+	/* Modal and overlay should not appear in the printout */
+	.modal,
+	.overlay {
+	  display: none;
+	}
+  
+	/* Ensure proper layout for printed content */
+	body {
+	  font-family: Arial, sans-serif;
+	  margin: 0;
+	  padding: 20px;
+	}
+  
+	.invoice-container {
+	  box-shadow: none;
+	  margin: 0 auto;
+	}
+  
+	.invoice-table {
+	  width: 100%;
+	  border-collapse: collapse;
+	}
+  
+	.invoice-table th, 
+	.invoice-table td {
+	  padding: 10px;
+	  border: 1px solid #ddd;
+	}
+  
+	.grand-total {
+	  text-align: right;
+	  margin-top: 20px;
+	  font-size: 18px;
+	  font-weight: bold;
+	}
+	@media print {
+		/* Hide the Logout button */
+		.white_btn {
+		  display: none !important; /* Ensure the button is hidden during printing */
+		}
+	  
+		/* Hide the Actions column */
+		.invoice-table th:nth-child(5),
+		.invoice-table td:nth-child(5) {
+		  display: none;
+		}
+	  
+		/* Hide buttons for adding/removing items */
+		.add-item-btn,
+		.remove-item-btn,
+		.print-btn {
+		  display: none;
+		}
+	  
+		/* Hide Modal and Overlay */
+		.modal,
+		.overlay {
+		  display: none;
+		}
+	  }
+	  
+  }
+  .navbar {
+	
+	height: 70px;
+	background-color: #3bb19b; /* Green-teal tone */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+	padding: 0 20px;
+}
+
+.navbar h1 {
+	color: white;
+	font-size: 28px; /* Slightly larger font for better readability */
+	font-weight: bold; /* Emphasize the brand name */
+	letter-spacing: 1px; /* Slight spacing for modern look */
+}
+
+.white_btn {
+	border: 2px solid white; /* Adds a border for more contrast */
+	outline: none;
+	padding: 10px 20px; /* Adjusted padding for a balanced button size */
+	background-color: white;
+	color: #3bb19b; /* Matches the navbar background color */
+	border-radius: 25px; /* Rounded edges for a sleek design */
+	font-weight: bold;
+	font-size: 15px; /* Slightly larger text for better readability */
+	cursor: pointer;
+	transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+.white_btn:hover {
+	background-color: #3bb19b; /* Inverts colors on hover */
+	color: white;
+	border: 2px solid #3bb19b;
+	transform: scale(1.05); /* Slight zoom effect */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adds a shadow on hover */
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+	.navbar {
+		height: 60px;
+		padding: 0 15px;
+	}
+
+	.navbar h1 {
+		font-size: 22px;
+	}
+
+	.white_btn {
+		padding: 8px 15px;
+		font-size: 13px;
+		width: 100px; /* Adjust width for smaller screens */
+	}
+}
+
+  /* Save Invoice Button */
+.save-btn {
+	background-color: #3bb19b; /* Matches the theme color */
+	color: white;
+	font-size: 16px;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	margin: 10px 10px 10px 0; /* Add spacing around the button */
+}
+
+.save-btn:hover {
+	background-color: #319b89; /* Slightly darker shade for hover */
+	transform: scale(1.05); /* Adds a subtle zoom effect */
+}
+
+/* View Invoices Button */
+/* View Invoices Button */
+.view-btn {
+	background-color: #6a1b9a; /* Purple color for differentiation */
+	color: white;
+	font-size: 16px;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	margin: 10px 0; /* Adds vertical spacing above and below the button */
+}
+
+.view-btn:hover {
+	background-color: #5a1480; /* Slightly darker purple for hover */
+	transform: scale(1.05); /* Adds a subtle zoom effect */
+}
+
+/* Adjustments for responsiveness */
+@media (max-width: 768px) {
+	.save-btn,
+	.view-btn {
+		font-size: 14px;
+		padding: 8px 15px;
+		width: 100%; /* Full width for smaller screens */
+		margin: 10px 0; /* Add vertical spacing between buttons */
+	}
+}
