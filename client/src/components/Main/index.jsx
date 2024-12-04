@@ -16,7 +16,7 @@ const Main = () => {
   // Fetch invoices from the server
   const fetchInvoices = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/invoices/invoice");
+      const response = await fetch("https://server-km6l.onrender.com/invoices/invoice");
       //const response = await fetch("http://localhost:8080/api/invoices/invoice"); 
       const data = await response.json();
       setInvoices(data);
@@ -63,7 +63,7 @@ const Main = () => {
     const grandTotal = calculateGrandTotal();
   
     try {
-      //const response = await fetch("http://localhost:8080/api/invoices/save", {
+      //const response = await fetch("https://server-km6l.onrender.com/api/invoices/save", {
       const response = await fetch("http://localhost:8080/api/invoices/save", {
         method: "POST",
         headers: {
