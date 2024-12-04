@@ -17,6 +17,7 @@ const Main = () => {
   const fetchInvoices = async () => {
     try {
       const response = await fetch("http://localhost:8080/api/invoices/invoice");
+      //const response = await fetch("http://localhost:8080/api/invoices/invoice"); 
       const data = await response.json();
       setInvoices(data);
     } catch (error) {
@@ -62,6 +63,7 @@ const Main = () => {
     const grandTotal = calculateGrandTotal();
   
     try {
+      //const response = await fetch("http://localhost:8080/api/invoices/save", {
       const response = await fetch("http://localhost:8080/api/invoices/save", {
         method: "POST",
         headers: {
