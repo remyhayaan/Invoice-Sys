@@ -21,7 +21,7 @@ const Signup = () => {
 		e.preventDefault();
 		try {
 			//const url = "http://localhost:8080/api/users";
-			const url = "http://localhost:8080/api/users";
+			const url = "https://server-km6l.onrender.com/api/users";
 			
 			const { data: res } = await axios.post(url, data);
 			navigate("/login");
