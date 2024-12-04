@@ -16,7 +16,7 @@ const Main = () => {
   // Fetch invoices from the server
   const fetchInvoices = async () => {
     try {
-      const response = await fetch("https://invoice-sys.onrender.com/api/invoices/invoice");
+      const response = await fetch("https://invoice-sys.onrender.com");
       const data = await response.json();
       setInvoices(data);
     } catch (error) {
