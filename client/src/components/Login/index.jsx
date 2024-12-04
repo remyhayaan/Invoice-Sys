@@ -14,7 +14,7 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/auth";
+			const url = "https://server-km6l.onrender.com/api/auth";
 			//const url = "http://localhost:8080/api/auth";
 			// const url = "https://invoice-sys.onrender.com";
 			const { data: res } = await axios.post(url, data);
